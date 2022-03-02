@@ -1,0 +1,87 @@
+php_value default_charset cp1251
+AddType 'text/html; charset=cp1251' .html .htm .shtml
+
+
+DirectoryIndex index.php
+RewriteEngine On
+
+
+<FilesMatch ".(avi|mp3|mp4|flv|swf|wmv|png|css|gif|jpeg|jpg|rar|zip|xml|rss)$|^$">
+Order deny,allow
+Allow from all
+</FilesMatch> 
+
+# Основной домен
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Главная
+RewriteRule ^index$ index.php [L]
+
+# Правила
+RewriteRule ^rules(/?)+$ index.php?menu=rules [L]
+
+
+
+# Новости
+RewriteRule ^news(/?)+$ index.php?menu=news [L]
+RewriteRule ^news/([0-9]+)(/?)+$ index.php?menu=news&page=$1 [L]
+
+#логин
+RewriteRule ^login(/?)+$ index.php?menu=login [L]
+
+# О нас
+RewriteRule ^about(/?)+$ index.php?menu=about [L]
+
+# Регистрация
+RewriteRule ^recovery/(.*)(/?)+$ index.php?menu=recovery&key=$1 [L]
+RewriteRule ^signup/key/(.*)(/?)+$ index.php?menu=signup&key=$1 [L]
+RewriteRule ^signup(/?)+$ index.php?menu=signup [L]
+
+# Восстановление пароля
+RewriteRule ^recovery(/?)+$ index.php?menu=recovery [L]
+
+# Последние выплаты
+RewriteRule ^payments(/?)+$ index.php?menu=payments [L]
+
+# FAQ
+RewriteRule ^faq(/?)+$ index.php?menu=faq [L]
+
+
+
+
+RewriteRule ^account/bonus6(/?)+$ index.php?menu=account&sel=bonus6 [L]
+
+# Аккаунт
+RewriteRule ^account/config(/?)+$ index.php?menu=account&sel=config [L]
+RewriteRule ^account/qiwi_insert(/?)+$ index.php?menu=account&sel=qiwi_insert [L]
+
+RewriteRule ^fill(/?)+$ index.php?menu=account&sel=insertp [L]
+RewriteRule ^account/payment(/?)+$ index.php?menu=account&sel=payment [L]
+
+RewriteRule ^account/swap(/?)+$ index.php?menu=account&sel=swap [L]
+RewriteRule ^account/store(/?)+$ index.php?menu=account&sel=store [L]
+RewriteRule ^account/referals(/?)+$ index.php?menu=account&sel=referals [L]
+
+RewriteRule ^account/farm(/?)+$ index.php?menu=account&sel=farm [L]
+
+RewriteRule ^account/insert(/?)+$ index.php?menu=account&sel=insert [L]
+
+RewriteRule ^account/insertfk(/?)+$ index.php?menu=account&sel=insertfk [L]
+RewriteRule ^account/exit(/?)+$ index.php?menu=account&sel=exit [L]
+
+
+
+
+
+RewriteRule ^account(/?)+$ index.php?menu=account [L]
+
+
+
+
+
+
+
+DefaultLanguage ru
+
+
